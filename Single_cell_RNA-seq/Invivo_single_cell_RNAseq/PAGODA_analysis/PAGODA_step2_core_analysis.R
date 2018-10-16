@@ -11,14 +11,14 @@ library(scde)
 library(RColorBrewer)
 ################################################################################################################
 # upload data from PAGODA_step1
-load("/srv/gsfs0/projects/brunet/salah/data/code_checking/expression_data/young_old_raw_counts_gene5500_mito10perc.Rdata")
-load("/srv/gsfs0/projects/brunet/salah/data/code_checking/R_analysis_gene5500_mito10perc/PAGODA/knn.error.models/knn.error.models.RData") 
-load("/srv/gsfs0/projects/brunet/salah/data/code_checking/R_analysis_gene5500_mito10perc/PAGODA/Varinfo/varinfo.RData") 
+load("Single_cell_RNA-seq/Invivo_single_cell_RNAseq/Essentials/Expression_data_PAGODA/young_old_raw_counts_gene5500_mito10perc.Rdata")
+load("/PAGODA/knn.error.models/knn.error.models.RData") 
+load("/PAGODA/Varinfo/varinfo.RData") 
 
 ################################################################################################################
 ## Evaluate overdispersion of pre-defined gene sets - KEGG
 
-setwd("/srv/gsfs0/projects/brunet/salah/data/code_checking/R_analysis_gene5500_mito10perc/PAGODA/")
+setwd("/PAGODA/")
 dir.create("KEGG_disease_aging")
 setwd("./KEGG_disease_aging/")
 
@@ -28,7 +28,7 @@ setwd("./KEGG_disease_aging/")
 # 'de novo' gene sets whose expression profiles are well-correlated within the given dataset.
 
 # Upload gene sets of interest (kegg_aging.env) - KEGG_2016_disease_aging_senescence_activation
-load("/srv/gsfs0/projects/brunet/salah/data/code_checking/R_analysis_gene5500_mito10perc/Pathways/KEGG_2016_disease_aging_activation_lower_case_for_PAGODA_090518.RData")
+load("Single_cell_RNA-seq/Invivo_single_cell_RNAseq/Essentials/Pathways/KEGG_2016_disease_aging_activation_lower_case_for_PAGODA.RData")
 
 # First, test pre-defined gene sets 
 pwpca <- pagoda.pathway.wPCA(varinfo_gene5500_mito10perc,
@@ -66,7 +66,7 @@ dev.off()
 ################################################################################################################
 # Correcting for cell cycle effect
 
-setwd("/srv/gsfs0/projects/brunet/salah/data/code_checking/R_analysis_gene5500_mito10perc/PAGODA/Varinfo/")
+setwd("/PAGODA/Varinfo/")
 
 cc.pattern <- pagoda.show.pathways(c("Cell cycle", "DNA replication"), 
                                    varinfo_gene5500_mito10perc, 
@@ -86,7 +86,7 @@ save(varinfo_gene5500_mito10perc_disease_aging.cc, file = "varinfo_gene5500_mito
 ## Correcting for cell cycle effect
 # Evaluate overdispersion of pre-defined gene sets - KEGG correcting for Cell Cycle
 
-setwd("/srv/gsfs0/projects/brunet/salah/data/code_checking/R_analysis_gene5500_mito10perc/PAGODA/")
+setwd("/PAGODA/")
 dir.create("KEGG_SENESCENCE_correctingCELLCYCLE")
 setwd("./KEGG_SENESCENCE_correctingCELLCYCLE/")
 
