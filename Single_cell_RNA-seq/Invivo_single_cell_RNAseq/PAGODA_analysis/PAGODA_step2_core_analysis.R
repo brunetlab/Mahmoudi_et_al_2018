@@ -18,7 +18,7 @@ load("/PAGODA/Varinfo/varinfo.RData")
 ################################################################################################################
 ## Evaluate overdispersion of pre-defined gene sets - KEGG
 
-setwd("/R_analysis_gene5500_mito10perc/PAGODA/")
+setwd("/PAGODA/")
 dir.create("KEGG_disease_aging")
 setwd("./KEGG_disease_aging/")
 
