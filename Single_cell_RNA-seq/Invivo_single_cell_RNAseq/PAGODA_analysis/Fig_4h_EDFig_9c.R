@@ -18,10 +18,10 @@ sessionInfo()
 setwd("/PAGODA/PAGODA_Visualization/Visualization_KEGG_disease_aging/")
 
 # Load the files required 
-load("Single_cell_RNA-seq/Invivo_single_cell_RNAseq/Essentials/Expression_data_PAGODA/young_old_raw_counts_gene5500_mito10perc.Rdata")
+load("/Single_cell_RNA-seq/Invivo_single_cell_RNAseq/Essentials/Expression_data_PAGODA/young_old_raw_counts_gene5500_mito10perc.Rdata")
 load("/PAGODA/knn.error.models/knn.error.models.RData") 
 load("/PAGODA/Varinfo/varinfo.RData") 
-load("Single_cell_RNA-seq/Invivo_single_cell_RNAseq/Essentials/Pathways/KEGG_2016_disease_aging_activation_lower_case_for_PAGODA.RData")
+load("/Single_cell_RNA-seq/Invivo_single_cell_RNAseq/Essentials/Pathways/KEGG_2016_disease_aging_activation_lower_case_for_PAGODA.RData")
 load("/PAGODA/KEGG_disease_aging/pwpca_top.aspects_KEGG_DISEASE_AGING_ACTIVATION_SENESCENCE_varnorm_knn.error.models.RData")
 load("/PAGODA/KEGG_disease_aging/clpca_KEGG_DISEASE_AGING_ACTIVATION_SENESCENCE_novel_gene_clusters.RData")
 
