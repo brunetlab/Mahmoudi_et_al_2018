@@ -1,10 +1,10 @@
 # Objective: Generate heatmap plots for pagoda analysis of young and old fibroblast in vivo using KEGG Activation geneset
-# Figure xxx
-# Use data generated on cluster using PAGODA.R script:
+# Fig. 4j and Extended Data Fig. 9c  
+# Use data generated using the PAGODA_step1_core_analysis.R and PAGODA_step2_core_analysis.R scripts:
 ## young_old_norm_counts_gene5500_mito10perc.Rdata (normalized gene counts)
 ## knn.error.models.RData
 ## varinfo.RData 
-## geneset used (KEGG_2016_disease_aging_senescence_activation_lower_case)
+## geneset used (KEGG_2016_disease_aging_activation_lower_case_for_PAGODA.RData)
 ## pwpca_top.aspects_KEGG_DISEASE_AGING_ACTIVATION_SENESCENCE_varnorm_knn.error.models.RData
 ## clpca_KEGG_DISEASE_AGING_ACTIVATION_SENESCENCE_novel_gene_clusters.RData
 
@@ -15,27 +15,15 @@ library(scde)          # scde_2.8.0
 library(RColorBrewer)  # RColorBrewer_1.1-2
 sessionInfo()
 ################################################################################################################
-# upload files required 
-#setwd("~/Dropbox/Code_checking_SM/For_Matt/PAGODA/PAGODA_Visualization/Visualization_KEGG_disease_aging/")
-setwd("~/Desktop/Dropbox/For_Matt/PAGODA/PAGODA_Visualization/Visualization_KEGG_disease_aging/")
+setwd("/PAGODA/PAGODA_Visualization/Visualization_KEGG_disease_aging/")
 
-#load("~/Dropbox/Code_checking_SM/For_Matt/PAGODA/code_checking/expression_data/young_old_raw_counts_gene5500_mito10perc.Rdata")
-load("~/Desktop/Dropbox/For_Matt/PAGODA/code_checking/expression_data/young_old_raw_counts_gene5500_mito10perc.Rdata")
-
-#load("~/Dropbox/Code_checking_SM/For_Matt/PAGODA/code_checking/R_analysis_gene5500_mito10perc/PAGODA/Expected_results/knn.error.models/knn.error.models.RData")
-load("~/Desktop/Dropbox/For_Matt/ClusterCheck/PAGODA/knn.error.models/knn.error.models.RData")
-
-#load("~/Dropbox/Code_checking_SM/For_Matt/PAGODA/code_checking/R_analysis_gene5500_mito10perc/PAGODA/Expected_results/Varinfo/varinfo.RData")
-load("~/Desktop/Dropbox/For_Matt/ClusterCheck/PAGODA/Varinfo/varinfo.RData")
-
-#load("~/Dropbox/Code_checking_SM/For_Matt/PAGODA/code_checking/R_analysis_gene5500_mito10perc/Pathways/KEGG_2016_disease_aging_activation_lower_case_for_PAGODA_090518.RData")
-load("~/Desktop/Dropbox/For_Matt/PAGODA/code_checking/R_analysis_gene5500_mito10perc/Pathways/KEGG_2016_disease_aging_activation_lower_case_for_PAGODA_090518.RData")
-
-#load("~/Dropbox/Code_checking_SM/For_Matt/PAGODA/code_checking/R_analysis_gene5500_mito10perc/PAGODA/Expected_results/KEGG_disease_aging/pwpca_top.aspects_KEGG_DISEASE_AGING_ACTIVATION_SENESCENCE_varnorm_knn.error.models.RData")
-load("~/Desktop/Dropbox/For_Matt/ClusterCheck/PAGODA/KEGG_disease_aging/pwpca_top.aspects_KEGG_DISEASE_AGING_ACTIVATION_SENESCENCE_varnorm_knn.error.models.RData")
-
-#load("~/Dropbox/Code_checking_SM/For_Matt/PAGODA/code_checking/R_analysis_gene5500_mito10perc/PAGODA/Expected_results/KEGG_disease_aging/clpca_KEGG_DISEASE_AGING_ACTIVATION_SENESCENCE_novel_gene_clusters.RData")
-load("~/Desktop/Dropbox/For_Matt/ClusterCheck/PAGODA/KEGG_disease_aging/clpca_KEGG_DISEASE_AGING_ACTIVATION_SENESCENCE_novel_gene_clusters.RData")
+# Load the files required 
+load("Single_cell_RNA-seq/Invivo_single_cell_RNAseq/Essentials/Expression_data_PAGODA/young_old_raw_counts_gene5500_mito10perc.Rdata")
+load("/PAGODA/knn.error.models/knn.error.models.RData") 
+load("/PAGODA/Varinfo/varinfo.RData") 
+load("Single_cell_RNA-seq/Invivo_single_cell_RNAseq/Essentials/Pathways/KEGG_2016_disease_aging_activation_lower_case_for_PAGODA.RData")
+load("/PAGODA/KEGG_disease_aging/pwpca_top.aspects_KEGG_DISEASE_AGING_ACTIVATION_SENESCENCE_varnorm_knn.error.models.RData")
+load("/PAGODA/KEGG_disease_aging/clpca_KEGG_DISEASE_AGING_ACTIVATION_SENESCENCE_novel_gene_clusters.RData")
 
 # ## Determine overall cell clustering (hclust) based on weighted correlation of genes underlying the top aspects transcriptional heterogeneity.
 # ## For some reason, return.table and return.genes have to be FALSE in order to get the list with all results for clustering:
@@ -64,9 +52,7 @@ save(hc, file = "cluster.cells.top.aspects_KEGG_DISEASE_AGING_varnorm_knn.error.
 
 # Input color inforamtion to be used by PAGODA
 # load Seurat clusters : Seurat_cluster2_dim30 and input color of choice
-
-#load("~/Dropbox/Code_checking_SM/For_Matt/Essentials/Expression_data_PAGODA/Seurat_cluster2_dims30.RData")
-load("~/Desktop/Dropbox/For_Matt/Essentials/Expression_data_PAGODA/Seurat_cluster2_dims30.RData")
+load("Single_cell_RNA-seq/Invivo_single_cell_RNAseq/Essentials/Expression_data_PAGODA/Seurat_cluster2_dims30.RData")
 
 Seurat <- as.character(Seurat_cluster2_dims30)
 Seurat[Seurat==0] <- "#F8766D"
