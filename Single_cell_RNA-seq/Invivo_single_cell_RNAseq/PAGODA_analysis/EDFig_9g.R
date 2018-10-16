@@ -1,5 +1,5 @@
 # Objective: Generate plots for gene expression of genes related to Cytokine-cytokine receptor signaling/TNF signaling/Fibroblast activation between young and old across different subgroups
-# Figure 4x
+# Extended Data Fig. 9d-f
 # Use data generated on cluster using Step3_pagoda.. :
 ## young_old_norm_counts_gene5500_mito10perc.Rdata (gene counts)
 
@@ -9,12 +9,12 @@ library(ggplot2)
 sessionInfo()
 ################################################################################################################
 # upload files required 
-setwd("~/Dropbox/Code_checking_SM/For_Matt/PAGODA/Transcriptome_signatures_youngold_PAGODA_clusters/Expected_data/")
-load("~/Dropbox/Code_checking_SM/For_Matt/Essentials/Expression_data_PAGODA/young_old_norm_counts_gene5500_mito10perc.Rdata")
-load("~/Dropbox/Code_checking_SM/For_Matt/PAGODA/PAGODA_Visualization/Visualization_KEGG_disease_aging/Expected_data/cluster.cells.top.aspects_KEGG_DISEASE_AGING_varnorm_knn.error.models.repeat_set_seed.RData")
+setwd("/PAGODA/Transcriptomic_signatures_young_old_PAGODA_clusters/")
+load("/Single_cell_RNA-seq/Invivo_single_cell_RNAseq/Essentials/Expression_data_PAGODA/young_old_norm_counts_gene5500_mito10perc.Rdata")
+load("/PAGODA/PAGODA_Visualization/Visualization_KEGG_disease_aging/cluster.cells.top.aspects_KEGG_DISEASE_AGING_varnorm_knn.error.models.repeat_set_seed.RData")
 
 # Upload kegg pathways 
-gene.sets <- read.table("~/Dropbox/Code_checking_SM/For_Matt/Essentials/Pathways/KEGG_2016_disease_aging_activation_lower_case_for_PAGODA_090518.txt", sep="\t", header = F, quote="",row.names = 1)
+load("/Single_cell_RNA-seq/Invivo_single_cell_RNAseq/Essentials/Pathways/KEGG_2016_disease_aging_activation_lower_case_for_PAGODA.RData")
 gene.set.data <- as.data.frame(t(gene.sets))
 gene.expression <- as.data.frame(young_old_norm_counts_gene5500_mito10perc)
 
