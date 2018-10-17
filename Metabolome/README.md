@@ -1,0 +1,1 @@
+# The population RNA-seq analyses are divided by:- **Essentials** - contains the necessary raw data to perform the metabolome analyses.- **Code_for_figures** - Provides the R scripts for generating the figures related to the metabolome data.
